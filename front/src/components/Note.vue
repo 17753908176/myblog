@@ -1,6 +1,7 @@
 <template>
 	<div id="note">
 		<div class="note-content">
+		
 			<div class="note-list">
 				<article class="article-item clearfix" v-for="item in article" >
 						<div class="article-title-content">
@@ -8,7 +9,7 @@
 							<span class="article-classify">{{ item.classify }}</span>
 							<span class="article-title">{{ item.title }}</span>
 						</div>
-						<a href="#"><img src="../assets/images/bw-1.png"class="article-img" alt="文章图像" /></a>
+						<router-link to="/Content" ><img src="../assets/images/bw-1.png"class="article-img" alt="文章图像" /></router-link>
 						<span class="note-resume">{{ item.resume }}</span>
 						<div class="article-info-content">
 							<span class="article-info-item"><i class="article-icon  article-author"></i>{{ item.author }}</span>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+	import event from '../func/event.js'
 	export default{
 		name:'Note',
         data:function(){
@@ -31,6 +33,7 @@
             return { article: [] }
     },
         created:function(){
+        	console.log(event);
 		    var sel = this;
 		    console.log(1);
             this.$ajax({
@@ -42,9 +45,8 @@
                 },
             }).
             then(function (response) {
-                console.log(2);
-                console.log(response.data.data);
                 sel.article = response.data.data;
+                event.$emit('change',sel.article);
             }).
             catch(function (error) {
                 console.log(error);
