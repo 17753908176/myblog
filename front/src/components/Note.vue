@@ -68,7 +68,6 @@
 }
 .note-content{
 	margin-top: .15rem;
-
 }
 /*文章样式*/
 .note-list{

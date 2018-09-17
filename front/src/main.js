@@ -7,9 +7,9 @@ import axios from 'axios'
 
 Vue.config.productionTip = false;
 //配置生产环境的ip
-//var url = ' http://127.0.0.1:80/';
+var url = ' http://127.0.0.1:80/';
 //生产环境
-var url =   'http://39.105.40.137:8000/';
+//var url =   'http://39.105.40.137:8000/';
 axios.defaults.baseURL = url;
 /* eslint-disable no-new */
 Vue.prototype.$ajax = axios;
